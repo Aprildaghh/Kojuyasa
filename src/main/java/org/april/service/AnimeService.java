@@ -4,12 +4,20 @@ import jakarta.transaction.Transactional;
 import org.april.model.Anime;
 import org.april.repository.AnimeRepository;
 
+import java.util.List;
+
 public class AnimeService implements Service<Anime> {
 
     private final AnimeRepository animeRepository;
 
     public AnimeService() {
         animeRepository = new AnimeRepository();
+    }
+
+    @Override
+    @Transactional
+    public List<Anime> getAll() {
+        return animeRepository.getAll();
     }
 
     @Override

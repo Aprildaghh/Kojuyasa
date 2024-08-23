@@ -4,12 +4,20 @@ import jakarta.transaction.Transactional;
 import org.april.model.Series;
 import org.april.repository.SeriesRepository;
 
+import java.util.List;
+
 public class SeriesService implements Service<Series> {
 
     private final SeriesRepository seriesRepository;
 
     public SeriesService() {
         seriesRepository = new SeriesRepository();
+    }
+
+    @Override
+    @Transactional
+    public List<Series> getAll() {
+        return seriesRepository.getAll();
     }
 
     @Override

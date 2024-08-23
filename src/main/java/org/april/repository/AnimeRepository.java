@@ -1,8 +1,11 @@
 package org.april.repository;
 
 import org.april.model.Anime;
+import org.april.model.Game;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import java.util.List;
 
 public class AnimeRepository implements Repository<Anime>{
 
@@ -52,4 +55,13 @@ public class AnimeRepository implements Repository<Anime>{
         session.remove(item);
         session.close();
     }
+
+    @Override
+    public List<Anime> getAll() {
+        Session session = sessionFactory.openSession();
+        List<Anime> animes = session.createQuery("select * from Anime", Anime.class).getResultList();
+        session.close();
+        return animes;
+    }
+
 }

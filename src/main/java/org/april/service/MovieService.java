@@ -4,12 +4,20 @@ import jakarta.transaction.Transactional;
 import org.april.model.Movie;
 import org.april.repository.MovieRepository;
 
+import java.util.List;
+
 public class MovieService implements Service<Movie>{
 
     private final MovieRepository movieRepository;
 
     public MovieService() {
         movieRepository = new MovieRepository();
+    }
+
+    @Override
+    @Transactional
+    public List<Movie> getAll() {
+        return movieRepository.getAll();
     }
 
     @Override

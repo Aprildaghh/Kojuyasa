@@ -4,12 +4,20 @@ import jakarta.transaction.Transactional;
 import org.april.model.Game;
 import org.april.repository.GameRepository;
 
+import java.util.List;
+
 public class GameService implements Service<Game>{
 
     private final GameRepository gameRepository;
 
     public GameService() {
         gameRepository = new GameRepository();
+    }
+
+    @Override
+    @Transactional
+    public List<Game> getAll() {
+        return gameRepository.getAll();
     }
 
     @Override

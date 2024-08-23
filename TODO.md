@@ -1,9 +1,0 @@
--- functional requirements
-- app will ask for a username and password at the start
-- app will show available command when typed "help"
-- app will show unwatched and watched movies, series and animes
-- app will have a filter command to show specific item
-- app will have an insert command to insert an item
-- app will have an edit command to edit an item
-- app will have a remove command to remove an item
-- 

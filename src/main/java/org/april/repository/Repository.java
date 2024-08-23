@@ -1,6 +1,10 @@
 package org.april.repository;
 
+import java.util.List;
+
 public interface Repository<T> {
+
+    public List<T> getAll();
 
     public void insertItem(T item);
 
