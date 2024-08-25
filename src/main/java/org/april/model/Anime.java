@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name="anime")
-public class Anime {
+public class Anime implements Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

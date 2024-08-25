@@ -22,7 +22,7 @@ public class MovieService implements Service<Movie>{
 
     @Override
     @Transactional
-    public void insertItem(Movie item) {
+    public void insertItem(int id, String[] fields) {
         movieRepository.insertItem(item);
     }
 
@@ -40,7 +40,7 @@ public class MovieService implements Service<Movie>{
 
     @Override
     @Transactional
-    public void editItem(Movie item) {
+    public void editItem(int id, String fieldName, String newValue) {
         movieRepository.editItem(item);
     }
 

@@ -22,7 +22,7 @@ public class GameService implements Service<Game>{
 
     @Override
     @Transactional
-    public void insertItem(Game item) {
+    public void insertItem(int id, String[] fields) {
         gameRepository.insertItem(item);
     }
 
@@ -40,7 +40,7 @@ public class GameService implements Service<Game>{
 
     @Override
     @Transactional
-    public void editItem(Game item) {
+    public void editItem(int id, String fieldName, String newValue) {
         gameRepository.editItem(item);
     }
 

@@ -22,7 +22,7 @@ public class AnimeService implements Service<Anime> {
 
     @Override
     @Transactional
-    public void insertItem(Anime item) {
+    public void insertItem(int id, String[] fields) {
         animeRepository.insertItem(item);
     }
 
@@ -40,7 +40,7 @@ public class AnimeService implements Service<Anime> {
 
     @Override
     @Transactional
-    public void editItem(Anime item) {
+    public void editItem(int id, String fieldName, String newValue) {
         animeRepository.editItem(item);
     }
 

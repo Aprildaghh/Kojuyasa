@@ -6,7 +6,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name="series")
-public class Series {
+public class Series implements Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

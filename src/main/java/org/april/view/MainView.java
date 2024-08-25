@@ -1,5 +1,9 @@
 package org.april.view;
 
+import org.april.model.Item;
+
+import java.util.List;
+
 public class MainView {
 
     public void showHelp() {
@@ -14,7 +18,7 @@ public class MainView {
                         Options:
                         -u
                             Returns only the unwatched items.
-                        -f <FIELDNAME> "FILTER"
+                        -f "FILTER"
                             Applies filter to the search.
                         -r <ID>
                             Removes the item with given id and used type.
@@ -29,6 +33,12 @@ public class MainView {
     }
 
     public void showInvalidInput() {
+        System.err.println("Invalid Input!");
+        System.out.println("Type \"help\" to get help!");
+    }
+
+    public void showItems(List<Item> items) {
 
     }
+    
 }

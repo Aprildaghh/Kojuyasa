@@ -22,7 +22,7 @@ public class SeriesService implements Service<Series> {
 
     @Override
     @Transactional
-    public void insertItem(Series item) {
+    public void insertItem(int id, String[] fields) {
         seriesRepository.insertItem(item);
     }
 
@@ -40,7 +40,7 @@ public class SeriesService implements Service<Series> {
 
     @Override
     @Transactional
-    public void editItem(Series item) {
+    public void editItem(int id, String fieldName, String newValue) {
         seriesRepository.editItem(item);
     }
 
