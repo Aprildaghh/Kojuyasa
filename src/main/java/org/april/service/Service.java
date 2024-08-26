@@ -6,7 +6,7 @@ public interface Service<T> {
 
     public List<T> getAll();
 
-    public void insertItem(int id, String[] fields);
+    public void insertItem(List<String> fields);
 
     public T getItemById(int id);
 

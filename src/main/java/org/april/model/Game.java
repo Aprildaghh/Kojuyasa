@@ -26,6 +26,14 @@ public class Game implements Item {
         this.finished = finished;
     }
 
+    @Override
+    public String toString() {
+        return "Game " +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", finished=" + finished;
+    }
+
     public int getId() {
         return id;
     }

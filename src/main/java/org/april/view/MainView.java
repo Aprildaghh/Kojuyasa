@@ -1,6 +1,6 @@
 package org.april.view;
 
-import org.april.model.Item;
+import org.april.model.*;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class MainView {
                             Edits the item with given id's field with new value.
                             If the operation is to change the watched data then only the id is needed.
                         -i [FIELDS]
-                            Inserts an item to used type. Date format is "dd-mm-yyyy".
+                            Inserts an item to used type. Date format is "yyyy-mm-dd".
                             Insert 1 at the end if the item is already watched.
                         """
         );
@@ -37,8 +37,28 @@ public class MainView {
         System.out.println("Type \"help\" to get help!");
     }
 
-    public void showItems(List<Item> items) {
-
+    public void showAnimes(List<Anime> items) {
+        if (items == null) return;
+        System.out.println("--- Anime ---");
+        for (Anime item : items) System.out.println(item);
     }
-    
+
+    public void showGames(List<Game> items) {
+        if (items == null) return;
+        System.out.println("--- Game ---");
+        for (Game item : items) System.out.println(item);
+    }
+
+    public void showMovies(List<Movie> items) {
+        if (items == null) return;
+        System.out.println("--- Movie ---");
+        for (Movie item : items) System.out.println(item);
+    }
+
+    public void showSeries(List<Series> items) {
+        if (items == null) return;
+        System.out.println("--- Series ---");
+        for (Series item : items) System.out.println(item);
+    }
+
 }

@@ -18,15 +18,19 @@ public class AnimeRepository implements Repository<Anime>{
     @Override
     public void insertItem(Anime item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.persist(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public Anime getItemById(int id) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-        Anime anime = (Anime) session.get(String.valueOf(id), Anime.class);
+        Anime anime = session.createQuery("select a from Anime a where title = " + id, Anime.class).getSingleResult();
+        session.getTransaction().commit();
         session.close();
 
         return anime;
@@ -35,8 +39,11 @@ public class AnimeRepository implements Repository<Anime>{
     @Override
     public Anime getItemByTitle(String title) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-        Anime anime = (Anime) session.createQuery("select * from Anime where title = '" + title + "'", Anime.class).getSingleResult();
+        Anime anime = (Anime) session.createQuery("select a from Anime a where title = '" + title + "'", Anime.class).getSingleResult();
+
+        session.getTransaction().commit();
         session.close();
 
         return anime;
@@ -45,21 +52,27 @@ public class AnimeRepository implements Repository<Anime>{
     @Override
     public void editItem(Anime item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.merge(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public void removeItem(Anime item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.remove(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public List<Anime> getAll() {
         Session session = sessionFactory.openSession();
-        List<Anime> animes = session.createQuery("select * from Anime", Anime.class).getResultList();
+        session.beginTransaction();
+        List<Anime> animes = session.createQuery("select a from Anime a ", Anime.class).getResultList();
+        session.getTransaction().commit();
         session.close();
         return animes;
     }

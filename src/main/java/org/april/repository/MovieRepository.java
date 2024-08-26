@@ -19,15 +19,19 @@ public class MovieRepository implements Repository<Movie>{
     @Override
     public void insertItem(Movie item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.persist(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public Movie getItemById(int id) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-        Movie movie = (Movie) session.get(String.valueOf(id), Movie.class);
+        Movie movie = session.createQuery("select m from Movie m where title = " + id, Movie.class).getSingleResult();
+        session.getTransaction().commit();
         session.close();
 
         return movie;
@@ -36,8 +40,10 @@ public class MovieRepository implements Repository<Movie>{
     @Override
     public Movie getItemByTitle(String title) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-        Movie movie = (Movie) session.createQuery("select * from Movie where title = '" + title + "'", Movie.class).getSingleResult();
+        Movie movie = (Movie) session.createQuery("select m from Movie m where title = '" + title + "'", Movie.class).getSingleResult();
+        session.getTransaction().commit();
         session.close();
 
         return movie;
@@ -46,21 +52,27 @@ public class MovieRepository implements Repository<Movie>{
     @Override
     public void editItem(Movie item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.merge(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public void removeItem(Movie item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.remove(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public List<Movie> getAll() {
         Session session = sessionFactory.openSession();
-        List<Movie> movies = session.createQuery("select * from Movie", Movie.class).getResultList();
+        session.beginTransaction();
+        List<Movie> movies = session.createQuery("select m from Movie m", Movie.class).getResultList();
+        session.getTransaction().commit();
         session.close();
         return movies;
     }

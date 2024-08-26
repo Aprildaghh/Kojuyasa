@@ -18,15 +18,19 @@ public class SeriesRepository implements Repository<Series>{
     @Override
     public void insertItem(Series item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.persist(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public Series getItemById(int id) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-        Series series = (Series) session.get(String.valueOf(id), Series.class);
+        Series series = session.createQuery("select s from Series s where title = " + id, Series.class).getSingleResult();
+        session.getTransaction().commit();
         session.close();
 
         return series;
@@ -35,8 +39,11 @@ public class SeriesRepository implements Repository<Series>{
     @Override
     public Series getItemByTitle(String title) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
-        Series series = (Series) session.createQuery("select * from Series where title = '" + title + "'", Series.class).getSingleResult();
+        Series series = (Series) session.createQuery("select s from Series s where title = '" + title + "'", Series.class).getSingleResult();
+
+        session.getTransaction().commit();
         session.close();
 
         return series;
@@ -45,21 +52,27 @@ public class SeriesRepository implements Repository<Series>{
     @Override
     public void editItem(Series item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.merge(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public void removeItem(Series item) {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.remove(item);
+        session.getTransaction().commit();
         session.close();
     }
 
     @Override
     public List<Series> getAll() {
         Session session = sessionFactory.openSession();
-        List<Series> series = session.createQuery("select * from Series", Series.class).getResultList();
+        session.beginTransaction();
+        List<Series> series = session.createQuery("select s from Series s", Series.class).getResultList();
+        session.getTransaction().commit();
         session.close();
         return series;
     }

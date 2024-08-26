@@ -36,6 +36,16 @@ public class Series implements Item {
         this.finished = finished;
     }
 
+    @Override
+    public String toString() {
+        return "Series " +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", seasonCount=" + seasonCount +
+                ", finished=" + finished;
+    }
+
     public int getId() {
         return id;
     }

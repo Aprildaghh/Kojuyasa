@@ -1,7 +1,9 @@
 package org.april.service;
 
 import jakarta.transaction.Transactional;
+import org.april.model.Anime;
 import org.april.model.Movie;
+import org.april.model.Series;
 import org.april.repository.MovieRepository;
 
 import java.util.List;
@@ -22,8 +24,14 @@ public class MovieService implements Service<Movie>{
 
     @Override
     @Transactional
-    public void insertItem(int id, String[] fields) {
-        movieRepository.insertItem(item);
+    public void insertItem(List<String> fields) {
+        Movie movie = new Movie();
+
+        movie.setTitle(fields.get(3));
+        movie.setReleaseDate(java.sql.Date.valueOf(fields.get(4)));
+        movie.setFinished(fields.get(5).equals("1"));
+
+        movieRepository.insertItem(movie);
     }
 
     @Override
@@ -41,7 +49,15 @@ public class MovieService implements Service<Movie>{
     @Override
     @Transactional
     public void editItem(int id, String fieldName, String newValue) {
-        movieRepository.editItem(item);
+        Movie movie = movieRepository.getItemById(id);
+
+        switch (fieldName) {
+            case "title": movie.setTitle(newValue);
+            case "releaseDate": movie.setReleaseDate(java.sql.Date.valueOf(newValue));
+            case "finished": movie.setFinished(newValue.equals("1"));
+        }
+
+        movieRepository.editItem(movie);
     }
 
     @Override

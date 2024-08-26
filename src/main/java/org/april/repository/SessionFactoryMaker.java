@@ -18,6 +18,10 @@ public class SessionFactoryMaker {
 
     private static SessionFactory factory;
 
+    private static final String URL = "jdbc:mysql://localhost:3306/kojuyasa";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "zxcasd45";
+
     private static void configureFactory()
     {
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);
@@ -25,9 +29,9 @@ public class SessionFactoryMaker {
         Map<String, Object> settings = new HashMap<>();
         settings.put("connection.driver_class", "com.mysql.jdbc.Driver");
         settings.put("dialect", "org.hibernate.dialect.MySQL8Dialect");
-        settings.put("hibernate.connection.url", "jdbc:mysql://localhost:3306/kojuyasa");  // URL
-        settings.put("hibernate.connection.username", "root");                              // USERNAME
-        settings.put("hibernate.connection.password", "zxcasd45");                          // PASSWORD
+        settings.put("hibernate.connection.url", URL);
+        settings.put("hibernate.connection.username", USERNAME);
+        settings.put("hibernate.connection.password", PASSWORD);
         settings.put("hibernate.current_session_context_class", "thread");
         settings.put("hibernate.show_sql", "false");
         settings.put("hibernate.format_sql", "false");

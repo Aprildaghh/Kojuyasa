@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "movie")
+@Table(name = "movies")
 public class Movie implements Item {
 
     @Id
@@ -30,6 +30,15 @@ public class Movie implements Item {
         this.title = title;
         this.releaseDate = releaseDate;
         this.finished = finished;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie " +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", finished=" + finished;
     }
 
     public int getId() {

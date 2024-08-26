@@ -1,9 +1,12 @@
 package org.april.service;
 
 import jakarta.transaction.Transactional;
+import org.april.model.Anime;
 import org.april.model.Game;
+import org.april.model.Series;
 import org.april.repository.GameRepository;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class GameService implements Service<Game>{
@@ -22,8 +25,13 @@ public class GameService implements Service<Game>{
 
     @Override
     @Transactional
-    public void insertItem(int id, String[] fields) {
-        gameRepository.insertItem(item);
+    public void insertItem(List<String> fields) {
+        Game game = new Game();
+
+        game.setTitle(fields.get(3));
+        game.setFinished(fields.get(4).equals("1"));
+
+        gameRepository.insertItem(game);
     }
 
     @Override
@@ -41,7 +49,14 @@ public class GameService implements Service<Game>{
     @Override
     @Transactional
     public void editItem(int id, String fieldName, String newValue) {
-        gameRepository.editItem(item);
+        Game game = gameRepository.getItemById(id);
+
+        switch (fieldName) {
+            case "title": game.setTitle(newValue);
+            case "finished": game.setFinished(newValue.equals("1"));
+        }
+
+        gameRepository.editItem(game);
     }
 
     @Override

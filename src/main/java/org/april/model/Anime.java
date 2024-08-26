@@ -32,6 +32,15 @@ public class Anime implements Item {
         this.finished = finished;
     }
 
+    @Override
+    public String toString() {
+        return "Anime " +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", finished=" + finished;
+    }
+
     public int getId() {
         return id;
     }
