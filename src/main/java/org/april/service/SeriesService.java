@@ -52,10 +52,10 @@ public class SeriesService implements Service<Series> {
         Series series = seriesRepository.getItemById(id);
 
         switch (fieldName) {
-            case "title": series.setTitle(newValue);
-            case "releaseDate": series.setReleaseDate(java.sql.Date.valueOf(newValue));
-            case "seasonCount": series.setSeasonCount(Integer.parseInt(newValue));
-            case "finished": series.setFinished(newValue.equals("1"));
+            case "title": series.setTitle(newValue); break;
+            case "releaseDate": series.setReleaseDate(java.sql.Date.valueOf(newValue)); break;
+            case "seasonCount": series.setSeasonCount(Integer.parseInt(newValue)); break;
+            case "finished": series.setFinished(newValue.equals("1")); break;
         }
 
         seriesRepository.editItem(series);

@@ -55,11 +55,9 @@ public class MainController {
             !line.contains("exit"))
             return false;
 
-        /*
-        if (line.contains("-r") || line.contains("-e") || line.contains("-i"))
-            if (line.split("-").length > 2)
-                return false;
-        */
+        if (line.contains("-r") && line.contains("-e")) return false;
+        else if (line.contains("-r") && line.contains("-i")) return false;
+        else if (line.contains("-i") && line.contains("-e")) return false;
 
         return true;
     }
@@ -257,7 +255,3 @@ public class MainController {
     }
 
 }
-/*
-* there's a commented out part of isValidInput.
-* editing doesn't work
-* */

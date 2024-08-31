@@ -29,7 +29,7 @@ public class SeriesRepository implements Repository<Series>{
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Series series = session.createQuery("select s from Series s where title = " + id, Series.class).getSingleResult();
+        Series series = session.createQuery("select s from Series s where id = " + id, Series.class).getSingleResult();
         session.getTransaction().commit();
         session.close();
 

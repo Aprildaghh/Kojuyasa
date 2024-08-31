@@ -29,7 +29,7 @@ public class AnimeRepository implements Repository<Anime>{
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Anime anime = session.createQuery("select a from Anime a where title = " + id, Anime.class).getSingleResult();
+        Anime anime = session.createQuery("select a from Anime a where id = " + id, Anime.class).getSingleResult();
         session.getTransaction().commit();
         session.close();
 

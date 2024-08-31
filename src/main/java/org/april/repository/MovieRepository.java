@@ -30,7 +30,7 @@ public class MovieRepository implements Repository<Movie>{
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Movie movie = session.createQuery("select m from Movie m where title = " + id, Movie.class).getSingleResult();
+        Movie movie = session.createQuery("select m from Movie m where id = " + id, Movie.class).getSingleResult();
         session.getTransaction().commit();
         session.close();
 

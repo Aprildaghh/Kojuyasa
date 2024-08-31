@@ -50,9 +50,9 @@ public class AnimeService implements Service<Anime> {
         Anime anime = animeRepository.getItemById(id);
 
         switch (fieldName) {
-            case "title": anime.setTitle(newValue);
-            case "releaseDate": anime.setReleaseDate(java.sql.Date.valueOf(newValue));
-            case "finished": anime.setFinished(newValue.equals("1"));
+            case "title": anime.setTitle(newValue); break;
+            case "releaseDate": anime.setReleaseDate(java.sql.Date.valueOf(newValue)); break;
+            case "finished": anime.setFinished(newValue.equals("1")); break;
         }
 
         animeRepository.editItem(anime);

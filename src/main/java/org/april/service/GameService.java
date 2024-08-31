@@ -52,8 +52,8 @@ public class GameService implements Service<Game>{
         Game game = gameRepository.getItemById(id);
 
         switch (fieldName) {
-            case "title": game.setTitle(newValue);
-            case "finished": game.setFinished(newValue.equals("1"));
+            case "title": game.setTitle(newValue); break;
+            case "finished": game.setFinished(newValue.equals("1")); break;
         }
 
         gameRepository.editItem(game);

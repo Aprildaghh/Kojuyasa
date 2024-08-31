@@ -52,9 +52,9 @@ public class MovieService implements Service<Movie>{
         Movie movie = movieRepository.getItemById(id);
 
         switch (fieldName) {
-            case "title": movie.setTitle(newValue);
-            case "releaseDate": movie.setReleaseDate(java.sql.Date.valueOf(newValue));
-            case "finished": movie.setFinished(newValue.equals("1"));
+            case "title": movie.setTitle(newValue); break;
+            case "releaseDate": movie.setReleaseDate(java.sql.Date.valueOf(newValue)); break;
+            case "finished": movie.setFinished(newValue.equals("1")); break;
         }
 
         movieRepository.editItem(movie);
