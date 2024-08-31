@@ -8,27 +8,26 @@ public class MainView {
 
     public void showHelp() {
         System.out.println(
-                        """
-                        Usage:
-                        getall
-                            Reads all items.
-                        <type>
-                            Reads the item with given types. Ex: anime
-                        
-                        Options:
-                        -u
-                            Returns only the unwatched items.
-                        -f "FILTER"
-                            Applies filter to the search.
-                        -r <ID>
-                            Removes the item with given id and used type.
-                        -e <ID> <FIELDNAME> "NEWVALUE"
-                            Edits the item with given id's field with new value.
-                            If the operation is to change the watched data then only the id is needed.
-                        -i [FIELDS]
-                            Inserts an item to used type. Date format is "yyyy-mm-dd".
-                            Insert 1 at the end if the item is already watched.
-                        """
+                        "Usage:\n" +
+                        "getall\n" +
+                        "    Reads all items.\n" +
+                        "<type>\n" +
+                        "    Reads the item with given types. Ex: anime\n" +
+                        "\n" +
+                        "Options:\n" +
+                        "-u\n" +
+                        "    Returns only the unwatched items.\n" +
+                        "-f \"FILTER\"\n" +
+                        "    Applies filter to the search.\n" +
+                        "-r <ID>\n" +
+                        "    Removes the item with given id and used type.\n" +
+                        "-e <ID> <FIELDNAME> \"NEWVALUE\"\n" +
+                        "    Edits the item with given id's field with new value.\n" +
+                        "    If the operation is to change the watched data then only the id is needed.\n" +
+                        "-i [FIELDS]\n" +
+                        "    Inserts an item to used type. Date format is \"yyyy-mm-dd\".\n" +
+                        "    Insert 1 at the end if the item is already watched."
+
         );
     }
 
